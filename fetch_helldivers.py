@@ -7,7 +7,7 @@ API_URL = "https://api.helldivers2.dev/api/v1/campaigns"
 S3_BUCKET = "helldivers2challengesapi"
 S3_KEY = "helldivers-data.json"
 headers = {
-    "X-Super-Client": "helldivers2challengesapi",
+    "X-Super-Client": "helldivers2challenges.com",
     "X-Super-Contact": "joebenwilson.dev@gmail.com",
 }
 
@@ -15,6 +15,9 @@ def fetch_and_upload():
     # Fetch from Helldivers 2 API
     response = requests.get(API_URL, headers=headers)
     response.raise_for_status()
+    if response.status_code != 200:
+        print(f"API error: {response.status_code} - {response.text}")
+        raise Exception("API request failed")
     data = response.json()
 
 
