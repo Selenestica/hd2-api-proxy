@@ -19,6 +19,7 @@ def fetch_and_upload():
         print(f"API error: {response.status_code} - {response.text}")
         raise Exception("API request failed")
     data = response.json()
+    print(data)
 
 
     # Upload to S3
