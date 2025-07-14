@@ -31,7 +31,6 @@ def fetch_and_upload():
         Key=S3_KEY,
         Body=json.dumps(data),
         ContentType='application/json',
-        ACL='public-read'  # Optional if you want public access
     )
 
 if __name__ == "__main__":
